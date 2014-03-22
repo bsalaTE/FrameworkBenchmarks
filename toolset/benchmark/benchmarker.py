@@ -862,6 +862,8 @@ class Benchmarker:
     if self.database_host == None: self.database_host = self.client_host
     if self.database_identity_file == None: self.database_identity_file = self.client_identity_file
 
+    print self.database_user, self.client_user
+
     # setup results and latest_results directories 
     self.result_directory = os.path.join("results", self.name)
     self.latest_results_directory = self.latest_results_directory()
@@ -960,6 +962,7 @@ class Benchmarker:
       #    self.results['frameworks'] = self.results['frameworks'] + [x.name]
       # Always overwrite framework list
       self.results['frameworks'] = [t.name for t in self.__gather_tests]
+
 
     # Setup the ssh command string
     self.database_ssh_string = "ssh -T -o StrictHostKeyChecking=no " + self.database_user + "@" + self.database_host
