@@ -3,11 +3,12 @@
 
 Vagrant.configure('2') do |config|
 
-  config.vm.box = 'ubuntu1204'
-  config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box'
+  config.vm.box = 'hashicorp/precise32'
 
+  config.vm.synced_folder 'frameworks/', '/usr/share/FrameworkBenchmarks/frameworks'
+  config.vm.synced_folder 'toolset/', '/usr/share/FrameworkBenchmarks/toolset'
+  config.vm.synced_folder 'config/', '/usr/share/FrameworkBenchmarks/config'
 
-  config.vm.synced_folder 'FrameworkBenchmarks/', '/usr/share/FrameworkBenchmarks'
 
 
   config.vm.provision :puppet do |puppet|
